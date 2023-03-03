@@ -1,10 +1,8 @@
 import './signup_login.css';
 import { Link, useNavigate  } from "react-router-dom";
-import SignUp from './signup';
 import './App.css';
-import axios, {Axios} from 'axios';
+import axios from 'axios';
 import { useState } from 'react';
-import Dashboard from './dashboard';
 
 function Login({ navigation }){
 
@@ -35,16 +33,23 @@ const getdata = (e) => {
   const verifyUser = (e) =>{
     e.preventDefault();
     const {email, password} = inpval;
-    if(email == ""){
+    if(email === ""){
       alert("Please enter email!")
-    }else if(password == ""){
+    }else if(password === ""){
       alert("Please enter password!")
     }else{
       
       axios.post("http://localhost/final_project/login.php", inpval)
         .then((response) => {
-          console.log(response.data);
-          navigate('/dashboard');
+          var responseData;
+          responseData = response.data[0].Message;
+          if(responseData === "Success"){
+            //Success
+            navigate('/dashboard');
+          }else {
+            //No account yet or Wrong password, Please re-enter!
+            alert(responseData);
+          }
       })
     }
   }
