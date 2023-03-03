@@ -10,6 +10,7 @@ function Dashboard(){
             <nav>
             New User? <Link to="/budgetTracking">Budget Tracking</Link> here!
             </nav>
+           
         </div>
       </div>
     );
