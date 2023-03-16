@@ -23,17 +23,17 @@ function BudgetTracking(){
     const options = {
         theme: "dark2",
         animationEnabled: true,
-        exportFileName: "New Year Resolutions",
+        exportFileName: "Investment ideas",
         exportEnabled: true,
         title:{
-            text: "Top Categories of New Year's Resolution"
+            text: "Ideal Investment ideas"
         },
         data: [{
             type: "pie",
             showInLegend: true,
             legendText: "{label}",
-            toolTipContent: "{label}: <strong>{y}%</strong>",
-            indexLabel: "{y}",
+            toolTipContent: "{label}: <strong>${y}</strong>",
+            indexLabel: "${y}",
             indexLabelPlacement: "inside",
             dataPoints: [
                 { y: fixedIncomeSecurityValue, label: "Fixed Income Securities" },
@@ -74,14 +74,14 @@ function BudgetTracking(){
         <div>
             <h1>Investment & Budget Tracking</h1>
              
-            <h1>Total Income - <input type="text" value={totalIncome} onChange={(e) => setTotalIncome(e.target.value)}/></h1>
-                <select value={portfolioType} onChange={handleChange}>
+            <h3>Enter Total Income - <input type="text" value={totalIncome} onChange={(e) => setTotalIncome(e.target.value)}/></h3>
+            <h3>Select Investment Ideology -   <select value={portfolioType} onChange={handleChange}>
                     <option value="cp">Conservative Portfolio</option>
                     <option value="mcp">Moderately Conservative Portfolio</option>
                     <option value="ap">Aggressive Portfolio</option>
                     <option value="map">Moderately Aggressive Portfolio</option>
                     <option value="vap">Very Aggressive Portfolio</option>
-                </select>
+                </select> </h3>
                 <CanvasJSChart options = {options}
 				/* onRef={ref => this.chart = ref} */
 			/>

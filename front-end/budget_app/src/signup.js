@@ -53,7 +53,7 @@ function SignUp(){
         .then((result) => {
           console.log(result);
       })
-      alert("Data added successfully");
+      alert("User registered successfully");
   
     }
   }
