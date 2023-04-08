@@ -1,6 +1,7 @@
 
-import { useState } from 'react';
 import CanvasJSReact from './canvasjs.react';
+import React,{useState,useEffect} from 'react';
+import PersonalFinance from './local-json/personal_finance.json';
 
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -11,6 +12,7 @@ function BudgetTracking(){
     
     const [totalIncome, setTotalIncome] = useState(totalIncomeAmount);
 
+
     var fixedIncomeSecurityInitialValue = totalIncome * 0.70;
     var cashAndEquivalentsInitialValue = totalIncome * 0.15;
     var equitiesInitialValue = totalIncome * 0.15;
@@ -19,6 +21,7 @@ function BudgetTracking(){
     const [cashAndEquivalentsValue, setcashAndEquivalentsInitialValue] = useState(cashAndEquivalentsInitialValue);
     const [equitiesValue, setEquitiesValue] = useState(equitiesInitialValue);
 
+    
 
     const options = {
         theme: "dark2",
@@ -72,19 +75,39 @@ function BudgetTracking(){
     }
     return (
         <div>
-            <h1>Investment & Budget Tracking</h1>
+            <div>
+            <h1>Investment, Budget Tracking & Personal Finance</h1>
              
-            <h3>Enter Total Income - <input type="text" value={totalIncome} onChange={(e) => setTotalIncome(e.target.value)}/></h3>
-            <h3>Select Investment Ideology -   <select value={portfolioType} onChange={handleChange}>
-                    <option value="cp">Conservative Portfolio</option>
-                    <option value="mcp">Moderately Conservative Portfolio</option>
-                    <option value="ap">Aggressive Portfolio</option>
-                    <option value="map">Moderately Aggressive Portfolio</option>
-                    <option value="vap">Very Aggressive Portfolio</option>
-                </select> </h3>
-                <CanvasJSChart options = {options}
-				/* onRef={ref => this.chart = ref} */
-			/>
+             <h3>Enter Total Income - <input type="text" value={totalIncome} onChange={(e) => setTotalIncome(e.target.value)}/></h3>
+             <h3>Select Investment Ideology -   <select value={portfolioType} onChange={handleChange}>
+                     <option value="cp">Conservative Portfolio</option>
+                     <option value="mcp">Moderately Conservative Portfolio</option>
+                     <option value="ap">Aggressive Portfolio</option>
+                     <option value="map">Moderately Aggressive Portfolio</option>
+                     <option value="vap">Very Aggressive Portfolio</option>
+                 </select> </h3>
+                 <CanvasJSChart options = {options}
+                 /* onRef={ref => this.chart = ref} */
+             />
+            </div>
+            <div>
+            <h1>Personal Finance</h1>
+            {PersonalFinance.PersonalFinance.map((item, i) => (
+    <td key={i}>
+       
+        <table>
+            <tr>
+                <th>{item.header}</th>
+            </tr>
+            <tr>
+                <td>
+                {item.Content}
+                </td>
+            </tr>
+        </table>
+        </td>
+))}
+            </div>
           </div>
         );
   }

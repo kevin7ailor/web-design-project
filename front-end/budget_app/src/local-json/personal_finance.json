@@ -1,0 +1,19 @@
+{
+	"PersonalFinance" : [{
+		"id" : 1,
+		"header" : "\\n\\nHow to Save Money in 8 Easy Steps",
+		"Content" : "1. Create a budget 2. Figure out how to reduce your spending, Automate your savings, Save smarter, Tackle your debt, Compare cost and value, Avoid the temptation of lifestyle inflation, Identify your financial goals"
+	},
+	{
+		"id" : 2,
+		"header" : "How to Get a Better Credit Score",
+		"Content" : "The first thing you need to understand is how credit scores work. Your credit score is a number between 300 and 900 that reflects how you’ve used credit in the past and changes based on how you’re currently using it. There are two credit bureaus in Canada, Equifax and TransUnion, that can tell you your credit score. Once you know your score, you can see where you stand. 300 to 560: Poor, 561 to 659: Fair, 660 to 724: Good, 725 to 759: Very good and 760 to 900: Excellent. Generally speaking, you’ll want your credit score to be at least 660 since that puts you in “good” territory and is arguably the bare minimum for you to be approved for things such as a credit card, mortgage, or car loan. That said, having a higher credit score is, of course, better, as you’ll appear more creditworthy. Many people aim to get their credit scores above 760 since it’s considered “excellent” and they’ll often get access to better interest rates when applying for a loan."
+	},
+	{
+		"id" : 3,
+		"header" : "What You Need to Know About Credit Reports",
+		"Content" : "If you’re applying for a mortgage, an apartment rental or even a new phone plan, there’s a good chance your potential lender, landlord or service provider will want to take a look at your credit report. That’s because your credit report shows your history as a borrower and offers a good idea of how likely you are to pay bills on time"
+	}
+	]
+	
+}
