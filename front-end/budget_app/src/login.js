@@ -48,7 +48,9 @@ const getdata = (e) => {
             navigate('/dashboard');
           }else {
             //No account yet or Wrong password, Please re-enter!
+            //alert(responseData);
             alert(responseData);
+            
           }
       })
     }
@@ -63,6 +65,9 @@ const getdata = (e) => {
               <nav>
               New User? <Link to="/">SignUp</Link> here!
               </nav>
+          </div>
+          <div class="alert alert-primary" role="alert">
+              {/* {responseData} */} sdasdasdasd
           </div>
         </div>
       );

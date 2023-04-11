@@ -10,12 +10,18 @@ function BudgetTracking(){
 
     var totalIncomeAmount = 2000; //Fetch default value (i.e. 20% of total income)
     
+    var totalExpenseAmount = 1000; //Fetch default value for expenses
+
+    var remainingAmount = totalIncomeAmount - totalExpenseAmount;
+
+    const [totalExpense, setTotalExpense] = useState(totalExpenseAmount);
+
     const [totalIncome, setTotalIncome] = useState(totalIncomeAmount);
 
 
-    var fixedIncomeSecurityInitialValue = totalIncome * 0.70;
-    var cashAndEquivalentsInitialValue = totalIncome * 0.15;
-    var equitiesInitialValue = totalIncome * 0.15;
+    var fixedIncomeSecurityInitialValue = remainingAmount * 0.70;
+    var cashAndEquivalentsInitialValue = remainingAmount * 0.15;
+    var equitiesInitialValue = remainingAmount * 0.15;
 
     const [fixedIncomeSecurityValue, setfixedIncomeSecurityValue] = useState(fixedIncomeSecurityInitialValue);
     const [cashAndEquivalentsValue, setcashAndEquivalentsInitialValue] = useState(cashAndEquivalentsInitialValue);
@@ -51,25 +57,25 @@ function BudgetTracking(){
 
     const handleChange = (event) => {
         if(event.target.value == "cp"){
-            setfixedIncomeSecurityValue(totalIncome * 0.70)
-            setcashAndEquivalentsInitialValue(totalIncome * 0.15)
-            setEquitiesValue(totalIncome * 0.15)
+            setfixedIncomeSecurityValue(remainingAmount * 0.70)
+            setcashAndEquivalentsInitialValue(remainingAmount * 0.15)
+            setEquitiesValue(remainingAmount * 0.15)
         }else if(event.target.value == "mcp"){
-            setfixedIncomeSecurityValue(totalIncome * 0.60)
-            setcashAndEquivalentsInitialValue(totalIncome * 0.05)
-            setEquitiesValue(totalIncome * 0.35)
+            setfixedIncomeSecurityValue(remainingAmount * 0.60)
+            setcashAndEquivalentsInitialValue(remainingAmount * 0.05)
+            setEquitiesValue(remainingAmount * 0.35)
         }else if(event.target.value == "ap"){
-            setfixedIncomeSecurityValue(totalIncome * 0.30)
-            setcashAndEquivalentsInitialValue(totalIncome * 0.10)
-            setEquitiesValue(totalIncome * 0.60)
+            setfixedIncomeSecurityValue(remainingAmount * 0.30)
+            setcashAndEquivalentsInitialValue(remainingAmount * 0.10)
+            setEquitiesValue(remainingAmount * 0.60)
         }else if(event.target.value == "map"){
-            setfixedIncomeSecurityValue(totalIncome * 0.40)
-            setcashAndEquivalentsInitialValue(totalIncome * 0.10)
-            setEquitiesValue(totalIncome * 0.5)
+            setfixedIncomeSecurityValue(remainingAmount * 0.40)
+            setcashAndEquivalentsInitialValue(remainingAmount * 0.10)
+            setEquitiesValue(remainingAmount * 0.5)
         }else if(event.target.value == "vap"){
-            setfixedIncomeSecurityValue(totalIncome * 0.10)
-            setcashAndEquivalentsInitialValue(totalIncome * 0.10)
-            setEquitiesValue(totalIncome * 0.80)
+            setfixedIncomeSecurityValue(remainingAmount * 0.10)
+            setcashAndEquivalentsInitialValue(remainingAmount * 0.10)
+            setEquitiesValue(remainingAmount * 0.80)
         }
         setPortfolioType(event.target.value)
     }
@@ -78,36 +84,55 @@ function BudgetTracking(){
             <div>
             <h1>Investment, Budget Tracking & Personal Finance</h1>
              
-             <h3>Enter Total Income - <input type="text" value={totalIncome} onChange={(e) => setTotalIncome(e.target.value)}/></h3>
-             <h3>Select Investment Ideology -   <select value={portfolioType} onChange={handleChange}>
+            <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                <h3>Total Income - <input type="text" class="form-control" value={totalIncome} onChange={(e) => setTotalIncome(e.target.value)}/></h3>
+             </div>
+                <div class="col-sm">
+                <h3>Total Expense - <input type="text" class="form-control" value={totalExpense} onChange={(e) => setTotalExpense(e.target.value)}/></h3>
+             </div>
+            </div>
+            </div>
+             
+             
+                 <div class="card">
+                    <h3>Investment</h3>
+                 <h4>Remaining Amount - <input type="text" class="form-control" value={remainingAmount} disabled onChange={(e) => setTotalExpense(e.target.value)}/></h4>  
+                 <h4>Select Investment Ideology -   <select value={portfolioType} onChange={handleChange}>
                      <option value="cp">Conservative Portfolio</option>
                      <option value="mcp">Moderately Conservative Portfolio</option>
                      <option value="ap">Aggressive Portfolio</option>
                      <option value="map">Moderately Aggressive Portfolio</option>
                      <option value="vap">Very Aggressive Portfolio</option>
-                 </select> </h3>
-                 <CanvasJSChart options = {options}
+                 </select> </h4>
+     <div class="card-body">
+  <CanvasJSChart options = {options}
                  /* onRef={ref => this.chart = ref} */
              />
+  </div>
+</div>
+               
             </div>
-            <div>
+            <div class="container-fluid">
+            
             <h1>Personal Finance</h1>
             {PersonalFinance.PersonalFinance.map((item, i) => (
-    <td key={i}>
-       
-        <table>
-            <tr>
-                <th>{item.header}</th>
-            </tr>
-            <tr>
-                <td>
-                {item.Content}
-                </td>
-            </tr>
-        </table>
+            <td key={i}>
+            <div class="container">
+                
+                <div class="card bg-light mb-3">
+                <div class="card-header">{item.header}</div>
+                <div class="card-body">
+                    
+                    <p class="card-text">{item.Content}</p>
+                </div>
+            </div>
+            </div>
         </td>
 ))}
             </div>
+            
           </div>
         );
   }
