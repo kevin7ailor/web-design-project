@@ -1,66 +1,66 @@
 import './signup_login.css';
-import { Link, useNavigate  } from "react-router-dom";
-import SignUp from './signup';
+import { Link, useNavigate } from "react-router-dom";
+// import SignUp from './signup';
 import './App.css';
-import axios, {Axios} from 'axios';
+import axios, { Axios } from 'axios';
 import { useState } from 'react';
-import Dashboard from './dashboard';
+// import Dashboard from './dashboard';
 
-function Login({ navigation }){
+function Login({ navigation }) {
 
   const navigate = useNavigate();
 
   const [inpval, setinpval] = useState({
     email: "",
     password: "",
-});
+  });
 
-const [data,setData] = useState([]);
+  const [data, setData] = useState([]);
 
-const [span,setSpan] = useState(false);
+  const [span, setSpan] = useState(false);
 
-const getdata = (e) => {
+  const getdata = (e) => {
 
-      const{value,name} = e.target;
-      console.log(value,name);
+    const { value, name } = e.target;
+    console.log(value, name);
 
-      setinpval(()=>{
+    setinpval(() => {
 
-          return{
-              ...inpval,
-              [name]:value
-          }
-      })
+      return {
+        ...inpval,
+        [name]: value
+      }
+    })
   }
-  const verifyUser = (e) =>{
+  const verifyUser = (e) => {
     e.preventDefault();
-    const {email, password} = inpval;
-    if(email == ""){
+    const { email, password } = inpval;
+    if (email == "") {
       alert("Please enter email!")
-    }else if(password == ""){
+    } else if (password == "") {
       alert("Please enter password!")
-    }else{
-      
-      axios.post("http://localhost/final_project/login.php", inpval)
+    } else {
+
+      axios.post("http://localhost:3000/final_project/login.php", inpval)
         .then((response) => {
           console.log(response.data);
           navigate('/dashboard');
-      })
+        })
     }
   }
-    return (
-      <div className="App">
-          <div className='main'>
-            <h1>Login</h1>
-              <input type="email" id="email" name="email" onChange={getdata}  placeholder="E-mail"/><br/>
-              <input type="password" id="password" name="password" onChange={getdata}  placeholder="Password"/><br/>
-              <input type="submit" onClick={verifyUser} value="Submit"/>
-              <nav>
-              New User? <Link to="/">SignUp</Link> here!
-              </nav>
-          </div>
-        </div>
-      );
+  return (
+    <div className="App">
+      <div className='main'>
+        <h1>Login</h1>
+        <input type="email" id="email" name="email" onChange={getdata} placeholder="E-mail" /><br />
+        <input type="password" id="password" name="password" onChange={getdata} placeholder="Password" /><br />
+        <input type="submit" onClick={verifyUser} value="Submit" />
+        <nav>
+          New User? <Link to="/">SignUp</Link> here!
+        </nav>
+      </div>
+    </div>
+  );
 }
 
 
