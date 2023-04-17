@@ -95,22 +95,32 @@ function BudgetTracking(){
             </div>
             </div>
              
-             
-                 <div class="card">
+                 <div class="card p-2">
                     <h3>Investment</h3>
-                 <h4>Remaining Amount - <input type="text" class="form-control" value={remainingAmount} disabled onChange={(e) => setTotalExpense(e.target.value)}/></h4>  
-                 <h4>Select Investment Ideology -   <select value={portfolioType} onChange={handleChange}>
+                    <div class="container">
+  <div class="row">
+    <div class="col-sm">
+    <h4>Remaining Amount - <input type="text" class="form-control" value={remainingAmount} disabled onChange={(e) => setTotalExpense(e.target.value)}/></h4>  
+                 { <h4>Select Investment Ideology -   <select value={portfolioType} onChange={handleChange}>
                      <option value="cp">Conservative Portfolio</option>
                      <option value="mcp">Moderately Conservative Portfolio</option>
                      <option value="ap">Aggressive Portfolio</option>
                      <option value="map">Moderately Aggressive Portfolio</option>
                      <option value="vap">Very Aggressive Portfolio</option>
-                 </select> </h4>
-     <div class="card-body">
+                 </select> </h4> }
+    </div>
+    <div class="col-sm">
+             
+    <div class="card-body">
   <CanvasJSChart options = {options}
                  /* onRef={ref => this.chart = ref} */
              />
   </div>
+    </div>
+    </div>
+</div>
+                 
+       
 </div>
                
             </div>
@@ -122,7 +132,7 @@ function BudgetTracking(){
             <div class="container">
                 
                 <div class="card bg-light mb-3">
-                <div class="card-header">{item.header}</div>
+                <div class="card-header"><b>{item.header}</b></div>
                 <div class="card-body">
                     
                     <p class="card-text">{item.Content}</p>
