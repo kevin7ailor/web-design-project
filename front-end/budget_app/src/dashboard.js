@@ -1,38 +1,64 @@
 import React from 'react'
-import { Chart } from "react-google-charts";
 import axios, { Axios } from 'axios';
+import { useEffect, useState } from "react";
+import CanvasJSReact from './canvasjs.react';
 
-export const data = [
-  ['Budget', 'Expenses'],
-  ['Income', 1000],
-  ['Grocery', 50],
-  ['Rent', 450],
-  ['Medical', 10],
-  ['Utilities', 80],
-  ['Insurance', 0]
-];
-
-export const options = {
-  title: "Expenses",
-};
-
-export function showChart() {
-  return (
-    <Chart
-      chartType="PieChart"
-      data={data}
-      options={options}
-      width={"100%"}
-      height={"400px"}
-    />
-  );
-}
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function Dashboard() {
+  const [IncomeData, setIncomeData] = useState([]);
+  useEffect(() => {
+    getIncomeData();
+  }, []);
 
-  axios.get('http://localhost:5000/getExpenseIncomeData.php').then(res => {
-    console.log(res.data);
-  });
+  function getIncomeData() {
+    axios.get('http://localhost:41062/www/incomeData.php').then(response => {
+      console.log(response.data);
+      setIncomeData(response.data);
+    });
+  }
+
+  const [expenseData, setExpenseData] = useState([]);
+  useEffect(() => {
+    getExpenseData();
+  }, []);
+
+  function getExpenseData() {
+    axios.get('http://localhost:41062/www/expenseData.php').then(response => {
+      console.log(response.data);
+      setExpenseData(response.data);
+    });
+  }
+
+  function mergeSameTypes() {
+    const sumAmount = 0;
+
+    console.log(expenseData);
+  }
+
+  const options = {
+    animationEnabled: true,
+    exportEnabled: true,
+    theme: "light1", // "dark1", "dark2"
+    title: {
+      text: "Incomes / Expenses report"
+    },
+    data: [{
+      type: "pie",
+      indexLabel: "{label}: ${y}",
+      startAngle: -90,
+      dataPoints: [
+        { y: IncomeData.incomeAmount, label: IncomeData.incomeType },
+        { y: expenseData.expenseAmount, label: expenseData.expenseType },
+        { y: 20, label: "Accomodation" },
+        { y: 14, label: "Transportation" },
+        { y: 12, label: "Activities" },
+        { y: 10, label: "Misc" }
+      ]
+    }]
+  }
+
   return (
     <div>
       <header>
@@ -51,9 +77,9 @@ function Dashboard() {
             <li className='nav-item'>
               <a className='nav-link' href="#logout">Logout</a>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <span className="nav-link">Welcome &lt;Username&gt;</span>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </header>
@@ -61,22 +87,30 @@ function Dashboard() {
         <div className="container-fluid col-12">
           <h1>Dashboard</h1>
           <div className='row'>
-            <div className="card col-4 p-3 m-1">
-              <div className="card-body">
-                <h5 className="card-title">Summary</h5>
-                <p className="card-text">Income: <span>$1000</span></p>
-                <p className="card-text">Grocery: <span>$50</span></p>
-                <p className="card-text">Rent: <span>$450</span></p>
-                <p className="card-text">Medical: <span>$10</span></p>
-                <p className="card-text">Utilities: <span>$80</span></p>
-                <p className="card-text">Insurance Amount: <span>$0</span></p>
+          <div className=' col-3 p-1 m-2'>
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Incomes</h5>
+                  <p className="card-text">{IncomeData.incomeType}: <span>${IncomeData.incomeAmount}</span></p>
+                </div>
               </div>
             </div>
-
-            <div className="col-4">
+            
+            <div className="col-5 p-1 m-5 mt-2">
               <div className='card'>
                 <div className='card-body'>
-                  <div id="piechart">{showChart()}</div>
+                  <div id="piechart">
+                    <CanvasJSChart options={options} /* onRef={ref => this.chart = ref} */ />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className='col-3 p-1 m-2'>
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Expenses</h5>
+                  <p className="card-text">{expenseData.expenseType}: <span>${expenseData.expenseAmount}</span></p>
                 </div>
               </div>
             </div>
