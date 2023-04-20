@@ -28,7 +28,46 @@ function BudgetTracking(){
     const [equitiesValue, setEquitiesValue] = useState(equitiesInitialValue);
 
     
-
+    const budgeting = {
+        theme: "dark2",
+        animationEnabled: true,
+        exportFileName: "Investment ideas",
+        exportEnabled: true,
+        
+        legend:{
+            cursor: "pointer",
+            itemclick: explodePie
+        },
+        title:{
+            text: "What is the 50/30/20 rule?",
+        },
+        subtitles: [{
+            text: "The 50/30/20 rule is a budgeting technique that divides your take-home income into three categories by percentages. It's a simple way to track your spending. Here’s the breakdown:",
+            fontSize: 16
+        }],
+        data: [{
+            type: "pie",
+            showInLegend: true,
+            legendText: "{label}",
+            toolTipContent: "{label}: <strong>${y}</strong>",
+            indexLabel: "{y}%",
+            indexLabelPlacement: "inside",
+            dataPoints: [
+                { y: 50, label: "Needs",  },
+                { y: 30, label: "Wants" },
+                { y: 20, label: "Savings or Debt" },
+            ]
+        }]
+    }
+    function explodePie (e) {
+        if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+            e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+        } else {
+            e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+        }
+        e.chart.render();
+    
+    }
     const options = {
         theme: "dark2",
         animationEnabled: true,
@@ -99,8 +138,22 @@ function BudgetTracking(){
             <div class="card p-2">
                 <h3>Budget Tracking</h3>
                     <div class="container">
-                
+                        <h5>Previous Month Expenses</h5>
+
                         
+                    </div>
+                    
+                    <div class="container">
+                        <h3>Budgeting technique</h3>
+                        <div class="card-header">
+                            <div class="card-body">
+                            <CanvasJSChart options = {budgeting}/>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="container">
+                        <a href="https://www.regions.com/insights/calculatorlibrary?Segment=personal">Click here for Personal Calculator</a>
                     </div> 
             </div><br></br>
              
@@ -143,13 +196,12 @@ function BudgetTracking(){
                 <div class="card bg-light mb-3">
                 <div class="card-header"><b>{item.header}</b></div>
                 <div class="card-body">
-                    
                     <p class="card-text">{item.Content}</p>
                 </div>
-            </div>
-            </div>
-        </td>
-))}
+                </div>
+                </div>
+            </td>
+            ))}
             </div>
             
           </div>

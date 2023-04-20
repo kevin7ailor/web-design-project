@@ -2,7 +2,7 @@ import './signup_login.css';
 import { Link  } from "react-router-dom";
 import './App.css';
 
-function Dashboard(){
+function Dashboard1(){
   return (
     <div>
         <div>
@@ -17,4 +17,4 @@ function Dashboard(){
   }
   
   
-  export default Dashboard;
+  export default Dashboard1;

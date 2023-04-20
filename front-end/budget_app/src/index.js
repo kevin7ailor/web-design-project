@@ -9,7 +9,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Dashboard from './dashboard';
+import Dashboard1 from './dashboard1';
 import BudgetTracking from './budgetTracking';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,7 +18,7 @@ root.render(
     <Routes>
       <Route path='/' element={<SignUp/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
-      <Route path='/dashboard' element={<Dashboard/>}></Route>
+      <Route path='/dashboard1' element={<Dashboard1/>}></Route>
       <Route path='/budgetTracking' element={<BudgetTracking/>}></Route>
     </Routes>
   </Router>
