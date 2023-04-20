@@ -85,6 +85,7 @@ function BudgetTracking(){
             <h1>Investment, Budget Tracking & Personal Finance</h1>
              
             <div class="container">
+            
             <div class="row">
                 <div class="col-sm">
                 <h3>Total Income - <input type="text" class="form-control" value={totalIncome} onChange={(e) => setTotalIncome(e.target.value)}/></h3>
@@ -93,28 +94,36 @@ function BudgetTracking(){
                 <h3>Total Expense - <input type="text" class="form-control" value={totalExpense} onChange={(e) => setTotalExpense(e.target.value)}/></h3>
              </div>
             </div>
+            
             </div>
+            <div class="card p-2">
+                <h3>Budget Tracking</h3>
+                    <div class="container">
+                
+                        
+                    </div> 
+            </div><br></br>
+             
              
                  <div class="card p-2">
                     <h3>Investment</h3>
                     <div class="container">
   <div class="row">
     <div class="col-sm">
-    <h4>Remaining Amount - <input type="text" class="form-control" value={remainingAmount} disabled onChange={(e) => setTotalExpense(e.target.value)}/></h4>  
-                 { <h4>Select Investment Ideology -   <select value={portfolioType} onChange={handleChange}>
+    <h5>Remaining Amount - <input type="text" class="form-control" value={remainingAmount} disabled onChange={(e) => setTotalExpense(e.target.value)}/></h5>  
+                 { <h5>Select Investment Ideology - </h5> }
+                 <select value={portfolioType} onChange={handleChange} class="form-select form-select-lg mb-3">
                      <option value="cp">Conservative Portfolio</option>
                      <option value="mcp">Moderately Conservative Portfolio</option>
                      <option value="ap">Aggressive Portfolio</option>
                      <option value="map">Moderately Aggressive Portfolio</option>
                      <option value="vap">Very Aggressive Portfolio</option>
-                 </select> </h4> }
+                 </select>
     </div>
     <div class="col-sm">
              
     <div class="card-body">
-  <CanvasJSChart options = {options}
-                 /* onRef={ref => this.chart = ref} */
-             />
+  <CanvasJSChart options = {options}/>
   </div>
     </div>
     </div>
