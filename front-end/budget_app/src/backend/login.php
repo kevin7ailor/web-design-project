@@ -6,6 +6,7 @@ header("Access-Control-Allow-Origin: http://localhost:3000/");
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Authorization, Origin');
 
+session_start();
 $data = json_decode(file_get_contents("php://input"));
 
 $email = $data->email;

@@ -31,12 +31,16 @@ function Dashboard() {
     });
   }
 
-  function mergeSameTypes() {
-    const sumAmount = 0;
-
-    console.log(expenseData);
-  }
-
+  const incomeDataPoints = IncomeData.map((income) => ({
+    y: income.incomeAmount,
+    label: income.incomeSource,
+  }));
+  
+  const expenseDataPoints = expenseData.map((expense) => ({
+    y: expense.expenseAmount,
+    label: expense.expenseSource,
+  }));
+  
   const options = {
     animationEnabled: true,
     exportEnabled: true,
@@ -48,16 +52,9 @@ function Dashboard() {
       type: "pie",
       indexLabel: "{label}: ${y}",
       startAngle: -90,
-      dataPoints: [
-        { y: IncomeData.incomeAmount, label: IncomeData.incomeType },
-        { y: expenseData.expenseAmount, label: expenseData.expenseType },
-        { y: 20, label: "Accomodation" },
-        { y: 14, label: "Transportation" },
-        { y: 12, label: "Activities" },
-        { y: 10, label: "Misc" }
-      ]
+      dataPoints: [...incomeDataPoints, ...expenseDataPoints]
     }]
-  }
+  };
 
   return (
     <div>
@@ -87,15 +84,21 @@ function Dashboard() {
         <div className="container-fluid col-12">
           <h1>Dashboard</h1>
           <div className='row'>
-          <div className=' col-3 p-1 m-2'>
+            <div className=' col-3 p-1 m-2'>
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">Incomes</h5>
-                  <p className="card-text">{IncomeData.incomeType}: <span>${IncomeData.incomeAmount}</span></p>
+                  <p className="card-text">
+                      {IncomeData.map((incomes) => (
+                        <ul style={{listStyle: "none"}}>
+                          <li>{incomes.incomeSource} : ${incomes.incomeAmount}</li>
+                        </ul>
+                      ))}
+                  </p>
                 </div>
               </div>
             </div>
-            
+
             <div className="col-5 p-1 m-5 mt-2">
               <div className='card'>
                 <div className='card-body'>
@@ -105,12 +108,18 @@ function Dashboard() {
                 </div>
               </div>
             </div>
-            
+
             <div className='col-3 p-1 m-2'>
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">Expenses</h5>
-                  <p className="card-text">{expenseData.expenseType}: <span>${expenseData.expenseAmount}</span></p>
+                  <p className="card-text">
+                      {expenseData.map((expenses) => (
+                        <ul style={{listStyle: "none"}}>
+                          <li>{expenses.expenseSource} : ${expenses.expenseAmount}</li>
+                        </ul>
+                      ))}
+                  </p>
                 </div>
               </div>
             </div>

@@ -11,14 +11,13 @@ $expenseData = array();
 
 $expenseResult = $conn->query($expenseQuery);
 if($expenseResult->num_rows > 0){
+    $temp = array();
+    // echo $expenseResult->num_rows;
     while($row = $expenseResult -> fetch_assoc()){
-        $expenseData["expenseType"] = $row["expenseType"];
-        $expenseData["expenseSource"] = $row["expenseSource"];
-        $expenseData["expenseAmount"] = $row["expenseAmount"];
+        $expenseData[] = $row;
     }
 } else {
     $expenseData["message"] = "Could not find any data";
 }
 
 print(json_encode($expenseData));
-?>

@@ -5,6 +5,7 @@ import './index.css';
 import SignUp from './signup';
 import Login from './login';
 import Dashboard from './dashboard';
+import Form from './splitwise';
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,6 +19,7 @@ root.render(
       <Route path='/' element={<SignUp/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
       <Route path='/dashboard' element={<Dashboard/>}></Route>
+      <Route path='/splitwise' element={<Form/>}></Route>
     </Routes>
   </Router>
 );
