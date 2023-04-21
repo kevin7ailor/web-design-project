@@ -1,10 +1,12 @@
 import './signup_login.css';
-import { Link  } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import './App.css';
 import axios, {Axios} from 'axios';
 import { useState } from 'react';
 
 function SignUp(){
+
+  const navigate = useNavigate();
 
   const [inpval, setinpval] = useState({
       firstname: "",
@@ -51,9 +53,31 @@ function SignUp(){
     }else{
       axios.post("http://localhost/final_project/signup.php", inpval)
         .then((result) => {
-          console.log(result);
+          var responseData;
+          responseData = result.data[0].Message;
+          if(responseData === "Account Already exists"){
+            alert(responseData);
+          }else {
+            //No account yet or Wrong password, Please re-enter!
+            navigate('/login');
+           
+          }
       })
-      alert("User registered successfully");
+
+      // axios.post("http://localhost/final_project/login.php", inpval)
+      //   .then((response) => {
+      //     var responseData;
+      //     responseData = response.data[0].Message;
+      //     if(responseData === "Success"){
+      //       //Success
+      //       navigate('/dashboard1');
+      //     }else {
+      //       //No account yet or Wrong password, Please re-enter!
+      //       //alert(responseData);
+      //       alert(responseData);
+            
+      //     }
+      // })
   
     }
   }
