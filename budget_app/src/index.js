@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import IncomeExpense from './incomeNexpenses';
-// import App from './App'
+import axios, {Axios} from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 import reportWebVitals from './reportWebVitals';

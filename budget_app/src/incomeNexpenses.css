@@ -42,10 +42,10 @@ form{
     padding: 10px;
     margin: 60px;
     margin-top: 70px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: 70%;
-    /* margin-left: 20px; */
-}
+    /* margin-left: 20px;*/
+} 
 #IncType,#IncDescription,#IncAmount,#ExpType,#ExpDescription,#ExpAmount{
     margin: 5px;
 }
