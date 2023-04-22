@@ -76,9 +76,7 @@ export const Form = () => {
                                    onChange={(e)=> setEmail(e.target.value)}
                                    type="email"/>
                         </div> 
-                        <div id='balance'>
-                            <label htmlFor="balance">Balance</label>
-                        </div>
+                    
                         <button type="submit" onClick={onSubmitFriendHandler}>Submit</button>
                     </form>
                 </div>
