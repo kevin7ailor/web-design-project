@@ -1,10 +1,7 @@
-import './signup_login.css';
+// import './signup_login.css';
 import { Link, useNavigate } from "react-router-dom";
-// import SignUp from './signup';
-import './App.css';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import { useState } from 'react';
-// import Dashboard from './dashboard';
 
 function Login({ navigation }) {
 
@@ -35,29 +32,40 @@ function Login({ navigation }) {
   const verifyUser = (e) => {
     e.preventDefault();
     const { email, password } = inpval;
-    if (email == "") {
+    if (email === "") {
       alert("Please enter email!")
-    } else if (password == "") {
+    } else if (password === "") {
       alert("Please enter password!")
     } else {
 
-      axios.post("http://localhost:3000/final_project/login.php", inpval)
+      axios.post("http://localhost:41062/www/login.php", inpval)
         .then((response) => {
-          console.log(response.data);
-          navigate('/dashboard');
+          var responseData;
+          responseData = response.data[0].Message;
+          if (responseData === "Success") {
+            //Success
+            navigate('/dashboard');
+          } else {
+            //No account yet or Wrong password, Please re-enter!
+            //alert(responseData);
+            alert(responseData);
+
+          }
         })
     }
   }
   return (
-    <div className="App">
-      <div className='main'>
-        <h1>Login</h1>
-        <input type="email" id="email" name="email" onChange={getdata} placeholder="E-mail" /><br />
-        <input type="password" id="password" name="password" onChange={getdata} placeholder="Password" /><br />
-        <input type="submit" onClick={verifyUser} value="Submit" />
-        <nav>
-          New User? <Link to="/">SignUp</Link> here!
-        </nav>
+    <div className="container-fluid App">
+      <div className="center-block">
+        <div className='card col-3 m-3 p-3'>
+          <h1>Login</h1>
+          <input className="form-control" type="email" id="email" name="email" onChange={getdata} placeholder="E-mail" /><br />
+          <input className="form-control" type="password" id="password" name="password" onChange={getdata} placeholder="Password" /><br />
+          <input className="btn btn-primary" type="submit" onClick={verifyUser} value="Submit" />
+          <nav>
+            New User? <Link to="/">SignUp</Link> here!
+          </nav>
+        </div>
       </div>
     </div>
   );

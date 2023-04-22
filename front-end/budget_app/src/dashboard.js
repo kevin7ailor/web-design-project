@@ -2,6 +2,7 @@ import React from 'react'
 import axios, { Axios } from 'axios';
 import { useEffect, useState } from "react";
 import CanvasJSReact from './canvasjs.react';
+// import BudgetTracking from './budgetTracking';
 
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -66,13 +67,13 @@ function Dashboard() {
               <a className="nav-link active" href="#Dashboard">Dashboard</a>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' href="#budget">Manage Budget</a>
+              <a className='nav-link' href="./budgetTracking">Budget Tracking</a>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' href="#profile">Profile</a>
+              <a className='nav-link' href="./incomesNexpenses">Add income/expense</a>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' href="#logout">Logout</a>
+              <a className='nav-link' href="./splitwise">Splitwise</a>
             </li>
             {/* <li className='nav-item'>
               <span className="nav-link">Welcome &lt;Username&gt;</span>
@@ -91,7 +92,7 @@ function Dashboard() {
                   <p className="card-text">
                       {IncomeData.map((incomes) => (
                         <ul style={{listStyle: "none"}}>
-                          <li>{incomes.incomeSource} : ${incomes.incomeAmount}</li>
+                          <li>{incomes.incomeSource} : +${incomes.incomeAmount}</li>
                         </ul>
                       ))}
                   </p>
@@ -116,7 +117,7 @@ function Dashboard() {
                   <p className="card-text">
                       {expenseData.map((expenses) => (
                         <ul style={{listStyle: "none"}}>
-                          <li>{expenses.expenseSource} : ${expenses.expenseAmount}</li>
+                          <li>{expenses.expenseSource} : -${expenses.expenseAmount}</li>
                         </ul>
                       ))}
                   </p>

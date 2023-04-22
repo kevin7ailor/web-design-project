@@ -120,6 +120,28 @@ function BudgetTracking(){
     }
     return (
         <div>
+            <header>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <a className="navbar-brand m-2" href="#">Budget App</a>
+          <ul className='navbar-nav'>
+            <li className='nav-item'>
+              <a className="nav-link" href="./Dashboard">Dashboard</a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link active' href="">Budget Tracking</a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' href="incomesNexpenses">Add income/expense</a>
+            </li>
+            <li className='nav-item'>
+              <a className='nav-link' href="./splitwise">Splitwise</a>
+            </li>
+            {/* <li className='nav-item'>
+              <span className="nav-link">Welcome &lt;Username&gt;</span>
+            </li> */}
+          </ul>
+        </nav>
+      </header>
             <div>
             <h1>Investment, Budget Tracking & Personal Finance</h1>
              
@@ -137,14 +159,10 @@ function BudgetTracking(){
             </div>
             <div class="card p-2">
                 <h3>Budget Tracking</h3>
-                    <div class="container">
-                        <h5>Previous Month Expenses</h5>
-
-                        
-                    </div>
+                    
                     
                     <div class="container">
-                        <h3>Budgeting technique</h3>
+                       
                         <div class="card-header">
                             <div class="card-body">
                             <CanvasJSChart options = {budgeting}/>
@@ -163,7 +181,7 @@ function BudgetTracking(){
                     <div class="container">
   <div class="row">
     <div class="col-sm">
-    <h5>Remaining Amount - <input type="text" class="form-control" value={remainingAmount} disabled onChange={(e) => setTotalExpense(e.target.value)}/></h5>  
+    <h5>Savings Amount - <input type="text" class="form-control" value={remainingAmount} disabled onChange={(e) => setTotalExpense(e.target.value)}/></h5>  
                  { <h5>Select Investment Ideology - </h5> }
                  <select value={portfolioType} onChange={handleChange} class="form-select form-select-lg mb-3">
                      <option value="cp">Conservative Portfolio</option>

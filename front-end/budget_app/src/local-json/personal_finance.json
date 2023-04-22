@@ -1,0 +1,25 @@
+{
+	"PersonalFinance" : [{
+		"id" : 1,
+		"header" : "How to Save Money in 8 Easy Steps",
+		"Content" : "Create a budget, Figure out how to reduce your spending, Automate your savings, Save smarter, Tackle your debt, Compare cost and value, Avoid the temptation of lifestyle inflation, Identify your financial goals"
+	},
+	{
+		"id" : 2,
+		"header" : "How to Get a Better Credit Score",
+		"Content" : "The first thing you need to understand is how credit scores work. Your credit score is a number between 300 and 900 that reflects how you’ve used credit in the past and changes based on how you’re currently using it. There are two credit bureaus in Canada, Equifax and TransUnion, that can tell you your credit score. Once you know your score, you can see where you stand. 300 to 560: Poor, 561 to 659: Fair, 660 to 724: Good, 725 to 759: Very good and 760 to 900: Excellent. Generally speaking, you’ll want your credit score to be at least 660 since that puts you in “good” territory and is arguably the bare minimum for you to be approved for things such as a credit card, mortgage, or car loan. That said, having a higher credit score is, of course, better, as you’ll appear more creditworthy. Many people aim to get their credit scores above 760 since it’s considered “excellent” and they’ll often get access to better interest rates when applying for a loan."
+	},
+	{
+		"id" : 3,
+		"header" : "What You Need to Know About Credit Reports",
+		"Content" : "If you’re applying for a mortgage, an apartment rental or even a new phone plan, there’s a good chance your potential lender, landlord or service provider will want to take a look at your credit report. That’s because your credit report shows your history as a borrower and offers a good idea of how likely you are to pay bills on time"
+	},
+	{
+		"id" : 4,
+		"header" : "How to Check Your Credit Score and Rebuild Your Credit History",
+		"Content" : "A credit score is a three-digit number that tells potential creditors how likely you are to pay back debt. In Canada, your credit score can range from 300 to 900 and the higher your score, the more creditworthy you are. Financial companies use your score to determine whether or not to give you a credit card, loan or mortgage and at what interest rates. Canada's two main credit bureaus (Equifax and TransUnion) regularly update your credit score based on the information your creditors send them about payments you’re making on your loans and credit cards. It's important to check your credit score regularly to make sure there are no mistakes. A sudden, unexplained dip in your score could indicate that something is a miss. You want to catch any errors as soon as possible to ensure they don’t negatively affect your credit score."
+	}
+	
+	]
+	
+}
